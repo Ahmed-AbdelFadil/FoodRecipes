@@ -123,10 +123,13 @@ async function searchByLetter(letter) {
 $("#searchBtn").click(function (e) {
     e.preventDefault()
     closeSideBar()
+    $(".loading-screen").css("display", "block");
 
+    setTimeout(() => {
+        $(".loading-screen").css("display", "none");
 
-    let box =
-        `
+        let box =
+            `
     <div class="container p-5 ">
                 
     <div class="inputs d-flex justify-content-around mb-5">
@@ -150,9 +153,15 @@ $("#searchBtn").click(function (e) {
     </div>
 
     `
-    $("#website").html(box)
+        $("#website").html(box)
 
-    fetchingInputText()
+        fetchingInputText()
+
+
+
+    }, 500)
+
+
 })
 
 // fetching text from inputs and show messages
@@ -218,7 +227,20 @@ function displaySearchByName(arrayOfMeals) {
 
     $(".col-md-3").click(function () {
         var id = $(this).attr("data-mealID");
-        getMealByID(id)
+
+        $(".loading-screen").css("display", "block");
+        setTimeout(() => {
+            $(".loading-screen").css("display", "none");
+            getMealByID(id)
+
+        }, 1500)
+
+
+
+
+
+
+
     })
 
 
@@ -265,8 +287,8 @@ function displayMealDetails(arrayOfMeals) {
         tag = arrayOfMeals.meals[0].strTags;
     }
 
-    if (arrayOfMeals.meals[0].strSource){
-        source=arrayOfMeals.meals[0].strSource;
+    if (arrayOfMeals.meals[0].strSource) {
+        source = arrayOfMeals.meals[0].strSource;
     }
 
 
@@ -357,14 +379,14 @@ function displayMealDetails(arrayOfMeals) {
 $("#catgBtn").click(function (e) {
     e.preventDefault()
     closeSideBar()
-    $(".loading-screen").css("display","block");
+    $(".loading-screen").css("display", "block");
 
     setTimeout(() => {
-        $(".loading-screen").css("display","none");
-        getCategory() 
+        $(".loading-screen").css("display", "none");
+        getCategory()
     }, 1500);
-    
-    
+
+
 })
 
 
@@ -428,9 +450,13 @@ function displayCategories(categoriesArr) {
 
     $(".col-md-3").click(function () {
         var category = $(this).attr("data-catg-name");
-        filterMealsBycatg(category)
-        console.log(category);
 
+        $(".loading-screen").css("display", "block");
+        setTimeout(() => {
+            $(".loading-screen").css("display", "none");
+            filterMealsBycatg(category)
+
+        }, 1500)
 
     })
 
@@ -487,8 +513,16 @@ function showByCategory(data) {
 
     $(".col-md-3").click(function () {
         var id = $(this).attr("data-mealID");
-        getMealByID(id)
-        console.log(id);
+
+        $(".loading-screen").css("display", "block");
+
+        setTimeout(() => {
+            $(".loading-screen").css("display", "none");
+            getMealByID(id)
+
+
+        }, 1500)
+
 
 
     })
@@ -509,15 +543,15 @@ function showByCategory(data) {
 $("#areaBtn").click(function (e) {
     e.preventDefault()
     closeSideBar()
-    $(".loading-screen").css("display","block");
+    $(".loading-screen").css("display", "block");
 
-    setTimeout(()=>{
-        $(".loading-screen").css("display","none");
+    setTimeout(() => {
+        $(".loading-screen").css("display", "none");
         getArea()
 
-    },1500)
-    
-    
+    }, 1500)
+
+
 })
 
 
@@ -577,8 +611,15 @@ function displayArea(data) {
 
     $(".col-md-3").click(function () {
         var country = $(this).attr("data-country");
-        filterMealsByArea(country)
 
+        $(".loading-screen").css("display", "block");
+
+        setTimeout(() => {
+            $(".loading-screen").css("display", "none");
+            filterMealsByArea(country)
+
+
+        }, 1500)
 
     })
 
@@ -624,17 +665,17 @@ async function filterMealsByArea(area) {
 $("#ingridentBtn").click(function (e) {
     e.preventDefault()
     closeSideBar()
-    $(".loading-screen").css("display","block");
+    $(".loading-screen").css("display", "block");
 
-    setTimeout(()=>{
-        $(".loading-screen").css("display","none");
+    setTimeout(() => {
+        $(".loading-screen").css("display", "none");
         getIngredient()
-    },1500)
-    
-    
-    
-    
-    
+    }, 1500)
+
+
+
+
+
 })
 
 
@@ -721,9 +762,16 @@ function displayIngrident(data) {
 
     $(".col-md-3").click(function () {
         var Ingrident = $(this).attr("data-ingrident");
-        console.log(Ingrident);
-        filterMealsByIngrident(Ingrident)
 
+
+        $(".loading-screen").css("display", "block");
+
+        setTimeout(() => {
+            $(".loading-screen").css("display", "none");
+            filterMealsByIngrident(Ingrident)
+
+
+        }, 1500)
 
     })
 
@@ -742,15 +790,15 @@ function displayIngrident(data) {
 $("#contactBtn").click(function (e) {
     e.preventDefault()
     closeSideBar()
-    $(".loading-screen").css("display","block");
-    setTimeout(()=>{
-        $(".loading-screen").css("display","none");
+    $(".loading-screen").css("display", "block");
+    setTimeout(() => {
+        $(".loading-screen").css("display", "none");
         displayContact()
         interactContact()
 
-    },1500)
-    
-    
+    }, 1500)
+
+
 
 
 })
